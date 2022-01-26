@@ -1,33 +1,11 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
+import React, { useState } from 'react';
 import appConfig from '../config.json'; //Para importar as paletas de cores 
+import {useRouter} from 'next/router';  //Sistema de roteamento do next  OBS: quando se tem o 'use' é chamado de Hooks
 
-function GlobalStyle() {
-    return (
-        <style global jsx>{`   //Esse estilo funcionará globalmente
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        list-style: none;
-      }
-      body {
-        font-family: 'Open Sans', sans-serif;
-      }
-      /* App fit Height */ 
-      html, body, #__next {
-        min-height: 100vh;
-        display: flex;
-        flex: 1;
-      }
-      #__next {
-        flex: 1;
-      }
-      #__next > * {
-        flex: 1;
-      }
-        `}</style>
-    )
-}
+
+
+
 
 function Titulo (props) {   //Podemos criar um componente que der propriedades a um título.
     console.log(props)
@@ -65,11 +43,13 @@ function Titulo (props) {   //Podemos criar um componente que der propriedades a
 //export default HomePage
 
 export default function PaginaInicial() {
-  const username = 'guilhermesarilho';
+  // const username = 'guilhermesarilho';
+    const [username, setUsername] = React.useState(''); //o setUsername também é um hook
+    const roteamento = useRouter();
 
   return (
     <>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
       <Box
         styleSheet={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -96,6 +76,12 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
+            onSubmit={function (infoDosEvent){  //Sempre que alguem for submitar no formulário faça:
+              infoDosEvent.preventDefault(); //Vai parar de recarregar a pagina
+              console.log("Alguem submeteu o form")
+              // window.location.href = '/chat'  //Ao clicar no botão, me encaminhe para a page 'chat'
+              roteamento.push('/chat')  //Também encaminha para a page 'chat', mas sem dar aquele refresh chato
+            }}
             styleSheet={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
               width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
@@ -106,7 +92,27 @@ export default function PaginaInicial() {
               {appConfig.name}
             </Text>
 
+            {/* <input value={username} 
+            type="text" 
+            onChange={function (event){
+              console.log("Usuario digitou", event.target.value)  //Quando o usuario digitar, guarde no parametro event o valor que sofreu uma Mudança(onChange)
+              //Onde está o valor?
+              const valor = event.target.value; 
+              //Trocar o valor da variável
+              setUsername(valor)
+            }} 
+            
+            /> */}
+
             <TextField
+              value={username}
+              onChange={function (event){
+                console.log("Usuario digitou", event.target.value)  //Quando o usuario digitar, guarde no parametro event o valor que sofreu uma Mudança(onChange)
+                //Onde está o valor?
+                const valor = event.target.value; 
+                //Trocar o valor da variável
+                setUsername(valor)
+              }}
               fullWidth
               textFieldColors={{
                 neutral: {
