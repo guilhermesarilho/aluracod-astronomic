@@ -70,7 +70,7 @@ export default function PaginaInicial() {
             width: '100%', maxWidth: '700px',
             borderRadius: '5px', padding: '32px', margin: '16px',
             boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
-            backgroundColor: appConfig.theme.colors.primary[400],
+            backgroundColor: appConfig.theme.colors.primary[200],
           }}
         >
           {/* Formulário */}
@@ -119,7 +119,7 @@ export default function PaginaInicial() {
                   textColor: appConfig.theme.colors.neutrals[999],  //texto
                   mainColor: appConfig.theme.colors.neutrals[999],  //borda
                   mainColorHighlight: appConfig.theme.colors.neutrals[999], //borda quando selecionada
-                  backgroundColor: appConfig.theme.colors.neutrals[200],  //campo
+                  backgroundColor: appConfig.theme.colors.neutrals['000'],  //campo
                 },
               }}
             />
@@ -129,7 +129,7 @@ export default function PaginaInicial() {
               fullWidth
               buttonColors={{
                 contrastColor: appConfig.theme.colors.neutrals["000"],
-                mainColor: appConfig.theme.colors.primary[600],
+                mainColor: appConfig.theme.colors.primary[400],
                 mainColorLight: appConfig.theme.colors.primary[500],
                 mainColorStrong: appConfig.theme.colors.primary[500],
               }}
