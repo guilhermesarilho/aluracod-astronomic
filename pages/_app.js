@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
         {/* Chamará a function globalStyle */}
-            <GlobalStyle /> 
+            <GlobalStyle />     /{/*Se vc der um Ctrl + clique, vc vai ser direcionado para a função desse componente */}
             <Component {...pageProps} />
         </>
     )
