@@ -6,7 +6,6 @@ import {useRouter} from 'next/router';  //Sistema de roteamento do next  OBS: qu
 
 
 
-
 function Titulo (props) {   //Podemos criar um componente que der propriedades a um título.
     console.log(props)
     const Tag = props.tag || 'h1';
